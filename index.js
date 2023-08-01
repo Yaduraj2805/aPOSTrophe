@@ -66,7 +66,7 @@ const storage = new CloudinaryStorage({
   },
 });
 
-// const upload = multer({ storage });
+const upload = multer({ storage });
 
 /* ROUTES WITH FILES */
 app.post("/auth/register", upload.single("picture"), register);
