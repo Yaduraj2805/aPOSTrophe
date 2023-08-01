@@ -5,7 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-import multer from "multer";
+// import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
@@ -33,36 +33,38 @@ app.use(cors());/*invoke crossOriginResourcePolicy*/
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* FILE STORAGE:multer */
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/assets");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
-const upload = multer({ storage });
-
-
-/* FILE STORAGE:multer */
-// const multer = require("multer");
-
-// const cloudinary = require("cloudinary").v2;
-// const { CloudinaryStorage } = require("multer-storage-cloudinary");
-
-// cloudinary.config({
-//   cloud_name: "dvrbknzgt",
-//   api_key: "626422648894148",
-//   api_secret: "fTIFu7_zJJuQeWbCB05-i5AIgp4",
-// });
-
-// const storage = new CloudinaryStorage({
-//   cloudinary,
-//   params: {
-//     folder: "apostrophe",
-//     allowedFormats: ["jpeg", "png", "jpg"],
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "public/assets");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
 //   },
 // });
+// const upload = multer({ storage });
+
+import {createRequire} from "module";
+const require=createRequire(import.meta.url);
+
+/* FILE STORAGE:multer */
+const multer = require("multer");
+
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+cloudinary.config({
+  cloud_name: "dvrbknzgt",
+  api_key: "626422648894148",
+  api_secret: "fTIFu7_zJJuQeWbCB05-i5AIgp4",
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "apostrophe",
+    allowedFormats: ["jpeg", "png", "jpg"],
+  },
+});
 
 // const upload = multer({ storage });
 
