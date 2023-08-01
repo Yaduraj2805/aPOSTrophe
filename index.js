@@ -5,7 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-import multer from "multer";
+// import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
@@ -45,7 +45,7 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 
 /* FILE STORAGE:multer */
-// const multer = require("multer");
+const multer = require("multer");
 
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
