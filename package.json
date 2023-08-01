@@ -21,7 +21,7 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "nodemon": "^2.0.20"
   },
